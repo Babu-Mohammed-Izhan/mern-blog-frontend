@@ -22,6 +22,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../constants';
 
 export default function DashProfile() {
   const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -151,7 +152,7 @@ export default function DashProfile() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch('/api/user/signout', {
+      const res = await fetch(`${BASE_URL}/api/user/signout`, {
         method: 'POST',
       });
       const data = await res.json();

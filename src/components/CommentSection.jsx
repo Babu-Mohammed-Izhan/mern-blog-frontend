@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Comment from './Comment';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { BASE_URL } from '../constants';
 
 export default function CommentSection({ postId }) {
   const { currentUser } = useSelector((state) => state.user);
@@ -19,7 +20,7 @@ export default function CommentSection({ postId }) {
       return;
     }
     try {
-      const res = await fetch('/api/comment/create', {
+      const res = await fetch(`${BASE_URL}/api/comment/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
