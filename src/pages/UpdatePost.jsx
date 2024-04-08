@@ -22,7 +22,7 @@ export default function UpdatePost() {
   useEffect(() => {
     try {
       const fetchPost = async () => {
-        const res = await fetch(`${BASE_URL}/api/post/getposts?postId=${postId}`);
+        const res = await fetch(`${BASE_URL}/api/post/getposts?postId=${postId}`, {credentials: 'include'});
         const data = await res.json();
         if (!res.ok) {
           console.log(data.message);
@@ -46,6 +46,7 @@ export default function UpdatePost() {
     try {
       const res = await fetch(`${BASE_URL}/api/post/updatepost/${formData._id}/${currentUser._id}`, {
         method: 'PUT',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },

@@ -14,7 +14,7 @@ export default function DashComments() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/api/comment/getcomments`);
+        const res = await fetch(`${BASE_URL}/api/comment/getcomments`,{credentials: 'include'});
         const data = await res.json();
         if (res.ok) {
           setComments(data.comments);
@@ -35,7 +35,7 @@ export default function DashComments() {
     const startIndex = comments.length;
     try {
       const res = await fetch(
-        `${BASE_URL}/api/comment/getcomments?startIndex=${startIndex}`
+        `${BASE_URL}/api/comment/getcomments?startIndex=${startIndex}`,{credentials: 'include'}
       );
       const data = await res.json();
       if (res.ok) {
@@ -56,6 +56,7 @@ export default function DashComments() {
         `${BASE_URL}/api/comment/deleteComment/${commentIdToDelete}`,
         {
           method: 'DELETE',
+          credentials: 'include',
         }
       );
       const data = await res.json();
